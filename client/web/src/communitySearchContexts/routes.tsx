@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { LayoutRouteProps } from '../routes'
-import { lazyComponent } from '../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 const KubernetesCommunitySearchContextPage = lazyComponent(
     () => import('./Kubernetes'),

@@ -1,6 +1,6 @@
 import { userSettingsAreaRoutes } from '../../../user/settings/routes'
 import { UserSettingsAreaRoute } from '../../../user/settings/UserSettingsArea'
-import { lazyComponent } from '../../../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 import { SHOW_BUSINESS_FEATURES } from '../../dotcom/productSubscriptions/features'
 import { authExp } from '../../site-admin/SiteAdminAuthenticationProvidersPage'
 

@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router'
 
 import { Scalars } from '../../graphql-operations'
 import { SiteAdminAlert } from '../../site-admin/SiteAdminAlert'
-import { lazyComponent } from '../../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 import { showPasswordsPage, showAccountSecurityPage, userExternalServicesEnabled } from './cloud-ga'
 import type { UserAddCodeHostsPageContainerProps } from './UserAddCodeHostsPageContainer'

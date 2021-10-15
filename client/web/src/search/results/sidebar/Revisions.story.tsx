@@ -2,11 +2,12 @@ import { MockedProviderProps } from '@apollo/client/testing'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
+import { RevisionsProps, TabIndex } from '@sourcegraph/branded/src/search/results/sidebar/Revisions'
 import { MockedTestProvider } from '@sourcegraph/shared/src/testing/apollo'
 
 import { WebStory } from '../../../components/WebStory'
 
-import { Revisions, RevisionsProps, TabIndex } from './Revisions'
+import { Revisions } from './Revisions'
 import {
     EMPTY_MOCKS,
     FEW_RESULTS_MOCKS,

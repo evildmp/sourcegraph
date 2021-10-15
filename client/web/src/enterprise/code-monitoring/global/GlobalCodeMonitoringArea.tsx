@@ -11,7 +11,7 @@ import { AuthenticatedUser } from '../../../auth'
 import { CodeMonitoringProps } from '../../../code-monitoring'
 import { Page } from '../../../components/Page'
 import { FeatureFlagProps } from '../../../featureFlags/featureFlags'
-import { lazyComponent } from '../../../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 interface Props
     extends RouteComponentProps<{}>,

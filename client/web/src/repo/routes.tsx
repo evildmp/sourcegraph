@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect, RouteComponentProps } from 'react-router'
 
 import { getModeFromPath } from '@sourcegraph/shared/src/languages'
+import { Settings } from '@sourcegraph/shared/src/schema/settings.schema'
 import { isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import {
     appendLineRangeQueryParameter,
@@ -12,8 +13,7 @@ import {
 
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { ActionItemsBar } from '../extensions/components/ActionItemsBar'
-import { Settings } from '../schema/settings.schema'
-import { lazyComponent } from '../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 import { formatHash, formatLineOrPositionOrRange } from '../util/url'
 
 import { BlobStatusBarContainer } from './blob/ui/BlobStatusBarContainer'

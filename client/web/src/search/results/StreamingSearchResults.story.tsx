@@ -56,7 +56,7 @@ const defaultProps: StreamingSearchResultsProps = {
         subjects: null,
         final: null,
     },
-    platformContext: { forceUpdateTooltip: sinon.spy(), settings: NEVER },
+    platformContext: { forceUpdateTooltip: sinon.spy(), settings: NEVER, requestGraphQL: () => EMPTY },
 
     streamSearch: () => of(streamingSearchResult),
 

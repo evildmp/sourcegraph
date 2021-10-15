@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect, RouteComponentProps } from 'react-router'
 
 import { Scalars } from '../graphql-operations'
-import { lazyComponent } from '../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 import { SiteAdminAreaRoute, SiteAdminAreaRouteContext } from './SiteAdminArea'
 

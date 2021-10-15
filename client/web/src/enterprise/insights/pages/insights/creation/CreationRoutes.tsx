@@ -4,7 +4,7 @@ import { Switch, Route, useRouteMatch } from 'react-router'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 
 import { AuthenticatedUser } from '../../../../../auth'
-import { lazyComponent } from '../../../../../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 import { InsightCreationPageType } from './InsightCreationPage'
 

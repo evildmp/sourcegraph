@@ -1,3 +1,4 @@
+import { PatternTypeProps } from '@sourcegraph/shared/src/search'
 import MapSearchIcon from 'mdi-react/MapSearchIcon'
 import React, { useMemo } from 'react'
 import { Route, RouteComponentProps, Switch } from 'react-router'
@@ -5,7 +6,6 @@ import { Route, RouteComponentProps, Switch } from 'react-router'
 import { BreadcrumbSetters } from '../../components/Breadcrumbs'
 import { HeroPage } from '../../components/HeroPage'
 import { RepositoryFields } from '../../graphql-operations'
-import { PatternTypeProps } from '../../search'
 
 import { RepositoryStatsContributorsPage } from './RepositoryStatsContributorsPage'
 import { RepositoryStatsNavbar } from './RepositoryStatsNavbar'

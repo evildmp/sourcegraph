@@ -3,7 +3,7 @@ import { Redirect, RouteComponentProps } from 'react-router'
 
 import { RepoSettingsAreaRoute } from '../../../repo/settings/RepoSettingsArea'
 import { repoSettingsAreaRoutes } from '../../../repo/settings/routes'
-import { lazyComponent } from '../../../util/lazyComponent'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 import { RepoSettingsPermissionsPageProps } from './RepoSettingsPermissionsPage'
 
