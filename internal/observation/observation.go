@@ -53,6 +53,7 @@ package observation
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/opentracing/opentracing-go/log"
@@ -60,6 +61,7 @@ import (
 
 	"github.com/sourcegraph/sourcegraph/internal/logging"
 	"github.com/sourcegraph/sourcegraph/internal/metrics"
+	"github.com/sourcegraph/sourcegraph/internal/sentry"
 	"github.com/sourcegraph/sourcegraph/internal/trace"
 )
 
@@ -70,6 +72,7 @@ type Context struct {
 	Logger     logging.ErrorLogger
 	Tracer     *trace.Tracer
 	Registerer prometheus.Registerer
+	Sentry     *sentry.Hub
 }
 
 // TestContext is a behaviorless Context usable for unit tests.
@@ -82,8 +85,9 @@ const (
 	EmitForMetrics ErrorFilterBehaviour = 1 << iota
 	EmitForLogs
 	EmitForTraces
+	EmitForSentry
 
-	EmitForAll = EmitForMetrics | EmitForLogs | EmitForTraces
+	EmitForDefault = EmitForMetrics | EmitForLogs | EmitForTraces
 )
 
 // Op configures an Operation instance.
@@ -203,10 +207,12 @@ func (op *Operation) WithAndLogger(ctx context.Context, err *error, args Args) (
 			logErr     = op.applyErrorFilter(err, EmitForLogs)
 			metricsErr = op.applyErrorFilter(err, EmitForMetrics)
 			traceErr   = op.applyErrorFilter(err, EmitForTraces)
+			sentryErr  = op.applyErrorFilter(err, EmitForSentry)
 		)
 		op.emitErrorLogs(logErr, logFields)
 		op.emitMetrics(metricsErr, count, elapsed, metricLabels)
 		op.finishTrace(traceErr, tr, logFields)
+		op.emitSentryError(sentryErr)
 	}
 }
 
@@ -240,6 +246,21 @@ func (op *Operation) emitErrorLogs(err *error, logFields []log.Field) {
 	}
 
 	logging.Log(op.context.Logger, op.name, err, kvs...)
+}
+
+// emitSentryError will send errors to Sentry.
+func (op *Operation) emitSentryError(err *error) {
+	fmt.Println("check error", err)
+	if err == nil || *err == nil {
+		return
+	}
+
+	fmt.Println("sentry", op.context.Sentry)
+	if op.context.Sentry == nil {
+		return
+	}
+
+	op.context.Sentry.CaptureError(*err, nil)
 }
 
 // emitMetrics will emit observe the duration, operation/result, and error counter metrics
