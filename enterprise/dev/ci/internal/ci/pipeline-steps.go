@@ -176,7 +176,7 @@ func addBackendIntegrationTests(c Config) func(*bk.Pipeline) {
 			bk.Cmd("./cmd/server/pre-build.sh"),
 			bk.Cmd("./cmd/server/build.sh"),
 			bk.Cmd("popd"),
-			bk.Cmd("./dev/ci/backend-integration.sh"),
+			bk.Cmd("GITHUB_TOKEN=$GHE_GITHUB_TOKEN ./dev/ci/backend-integration.sh"),
 			bk.Cmd(`docker image rm -f "$IMAGE"`),
 		)
 	}
